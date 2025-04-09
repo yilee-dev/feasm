@@ -1,5 +1,6 @@
 import { ChangeEvent, useState } from "react";
 import useCustomLogin from "../../hooks/useCustomLogin";
+import { useLocation, useNavigate } from "react-router";
 
 const initState: LoginForm = {
   email: "",
@@ -8,6 +9,11 @@ const initState: LoginForm = {
 
 export default function LoginComponent() {
   const [loginParam, setLoginParam] = useState<LoginForm>({ ...initState });
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location.state?.from || "/";
 
   const { doLogin, moveToPath } = useCustomLogin();
 
@@ -25,7 +31,7 @@ export default function LoginComponent() {
       if (data.error) {
         console.log("login fail");
       } else {
-        moveToPath("/");
+        navigate(from, { replace: true });
       }
     });
   };

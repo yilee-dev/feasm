@@ -1,5 +1,8 @@
 import axios from "axios";
 
+const host = import.meta.env.API_SERVER_HOST;
+console.log(host);
+
 export const loginPost = async (
   loginParam: LoginForm
 ): Promise<LoginResponse> => {

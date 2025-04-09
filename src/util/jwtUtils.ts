@@ -33,7 +33,7 @@ const beforeReq = (
     return Promise.reject(error);
   }
 
-  const { accessToken } = memberInfo.accessToken;
+  const { accessToken } = memberInfo;
 
   config.headers.Authorization = `Bearer ${accessToken}`;
   return config;

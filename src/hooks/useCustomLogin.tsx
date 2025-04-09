@@ -12,7 +12,7 @@ export default function useCustomLogin() {
     (state: RootState) => state.loginSlice
   );
 
-  const isLogin = loginState ? true : false;
+  const isLogin = loginState.email ? true : false;
 
   const doLogin = async (loginParam: LoginForm) => {
     return dispatch(loginPostAsync(loginParam)).unwrap();
